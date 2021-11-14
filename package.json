@@ -3,13 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mui/icons-material": "^5.1.0",
+    "@mui/material": "^5.1.0",
+    "@stripe/react-stripe-js": "^1.6.0",
+    "@stripe/stripe-js": "^1.21.1",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.24.0",
+    "firebase": "^9.4.1",
+    "moment": "^2.29.1",
     "react": "^17.0.2",
+    "react-currency-format": "^1.0.0",
     "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
+    "react-router-dom": "^6.0.2",
     "web-vitals": "^1.1.2"
+  },
+  "devDependencies": {
+    "react-scripts": "4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
