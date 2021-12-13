@@ -1,3 +1,19 @@
+Amazon-Clone web application using React.js , node.js , stripe library , express library ...
+
+
+file:///C:/Users/226499/Downloads/React%20App%20and%204%20more%20pages%20-%20Personal%20-%20Microsoft_%20Edge%202021-11-18%2016-53-49.mp4
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
