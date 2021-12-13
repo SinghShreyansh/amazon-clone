@@ -1,7 +1,7 @@
 Amazon-Clone web application using React.js , node.js , stripe library , express library ...
 
 
-file:///C:/Users/226499/Downloads/React%20App%20and%204%20more%20pages%20-%20Personal%20-%20Microsoft_%20Edge%202021-11-18%2016-53-49.mp4
+https://user-images.githubusercontent.com/91277635/145802990-8c220281-1a93-4975-86a9-cedc4a38e366.mp4
 
 
 
