@@ -13,7 +13,7 @@ import { loadStripe } from "@stripe/stripe-js"
 import { Elements } from "@stripe/react-stripe-js"
 import Orders from './Orders'
 
-const promise =loadStripe("pk_test_51Jv4HASC2WBqFweclOWhWnZN1VXKLnruvhLlK879NuCs47UP32rqcgzrnmeYC3Blki8Soh595J1Chb4NlmP97Zum00Mft1RtKU")
+const promise =loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
   
 
 function App() {
@@ -40,7 +40,7 @@ function App() {
         });
       }
     });
-  },dispatch);
+  },[dispatch]);
   return (
     <Router>
     <div className="app">

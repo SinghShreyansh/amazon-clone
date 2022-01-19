@@ -58,7 +58,8 @@ function Payment() {
                   amount : paymentIntent.amount,
                   created: paymentIntent.created
               })
-
+             
+              if(payload){ }
 
             setSucceeded(true);
             setError(null)
