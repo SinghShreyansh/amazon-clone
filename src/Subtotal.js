@@ -10,7 +10,7 @@ function Subtotal() {
 
     const payment=(e=>navigate('/payment'))
 
-    const [{basket},dispatch]= useStateValue();
+    const [{basket}]= useStateValue();
 
     return (
         <div className="subtotal">

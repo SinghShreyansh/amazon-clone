@@ -13,11 +13,11 @@ import { loadStripe } from "@stripe/stripe-js"
 import { Elements } from "@stripe/react-stripe-js"
 import Orders from './Orders'
 
-const promise =loadStripe("sk_test_51Jv4HASC2WBqFwecRxL4KipgMezAy6OYMcScnlzTSFE9ybMUyjIzBiqob648JjcQfVK3kj8CSc8BOiV0nup79w5N005OYjMFaJ")
+const promise =loadStripe("pk_test_51Jv4HASC2WBqFweclOWhWnZN1VXKLnruvhLlK879NuCs47UP32rqcgzrnmeYC3Blki8Soh595J1Chb4NlmP97Zum00Mft1RtKU")
   
 
 function App() {
-  const[{},dispatch]=useStateValue()
+  const[,dispatch]=useStateValue()
 
    useEffect(() => {
     // will only run once when the app component loads...
@@ -40,7 +40,7 @@ function App() {
         });
       }
     });
-  }, []);
+  },dispatch);
   return (
     <Router>
     <div className="app">
