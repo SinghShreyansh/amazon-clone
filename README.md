@@ -1,6 +1,6 @@
 Amazon-Clone web application using React.js , node.js , stripe library , express library ...
 
-Deployed link - https://amazon-clone-react-flax.vercel.app/
+Deployed link - https://amazon-clone-react-jjunshps8-singhshreyansh.vercel.app/
 # Payment is not working in production mode
 
 
