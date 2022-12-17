@@ -118,7 +118,7 @@ function Payment() {
           handler: function(response){
             alert("Payment is successful with payment id: "+response.razorpay_payment_id)
             
-            }
+            },
             
            prefill: {
              name: "Shreyansh Singh"
