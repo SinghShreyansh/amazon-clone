@@ -73,7 +73,7 @@ function Payment() {
           handler: function(response){
             alert("Payment is successful with payment id: "+response.razorpay_payment_id)
             // storing buy data to firebase cloud database
-            db.collection('users').doc(user?.uid).collection('orders').doc(paymentIntent.id)
+            db.collection('users').doc(user?.uid).collection('orders').doc(response.razorpay_payment_id)
               .set({
                   basket : basket,
                   amount : amount,
@@ -144,7 +144,7 @@ function Payment() {
                         <div className="payment__details">
                             {/* Stripe magic will go*/}
 
-                            <form onSubmit={handleSubmit}>
+                            <form >
                                 <CardElement onChange={handleChange}/>
 
                              <div className="payment__priceContainer">
