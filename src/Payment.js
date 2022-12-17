@@ -81,6 +81,58 @@ function Payment() {
          setDisabled(event.empty)
          setError(event.error ? event.error.message : "")
     }
+    
+    const loadScript = (src) => {
+       return new Promise((resolve)=>{
+       const script = document.createElement('script')
+       script.src = src
+       
+       script.onload = () => {
+       resolve(true)
+       }
+       
+       script.onerror = () => {
+        resolve(false)
+        }
+        
+        document.body.appendChild(script)
+        })
+    }
+    
+    const displayRazorpay = async (amount) => {
+      const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
+      
+      if(!res){
+        alert("You are offline... Failed to load Razorpay SDK")
+        return;
+      }
+      
+      const options = {
+          key: "rzp_test_8q4HUG7HQkYDGJ",
+          currency: "USD",
+          amount: amount * 100,
+          name: "Shreyansh Singh",
+          "description": "Thanks for purchasing",
+          image: "https://d24v5oonnj2ncn.cloudfront.net/wp-content/uploads/2018/10/16030301/Amazon-Logo-Black.jpg",
+          
+          handler: function(response){
+            alert("Payment is successful with payment id: "+response.razorpay_payment_id)
+            
+            }
+            
+           prefill: {
+             name: "Shreyansh Singh"
+           }
+           
+            
+          };
+          
+          const paymentObject = new window.Razorpay(options)
+          paymentObject.open();
+          
+          
+      }
+    
     return (
         <div className="payment">
             <div className="payment__container">
@@ -140,7 +192,7 @@ function Payment() {
                                  />
 
                                  <button disabled={processing || disabled ||succeeded}>
-                                     <span>{ processing ? <p>Processing</p>:"Buy Now"}</span>
+                                     <span onClick={displayRazorpay(getBasketTotal(basket))}>{ processing ? <p>Processing</p>:"Buy Now"}</span>
                                  </button>
                              </div>
 
