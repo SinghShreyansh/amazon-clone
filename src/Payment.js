@@ -26,54 +26,9 @@ function Payment() {
     const [disabled, setDisabled] = useState(true)
     const [clientSecret, setClientSecret] = useState(true)
 
-    useEffect(() => {
-        // generates the special stripe secret which allows us to charge a customer 
+  
+  
 
-        const getClientSecret= async () =>{
-           const response = await axios({
-               method: 'post',
-               // Stripe expects the total in a currencies subunits
-               url : `/payments/create?total=${getBasketTotal(basket) * 100 }`
-           })
-           setClientSecret(response.data.clientSecret)
-        }
-       getClientSecret()
-    }, [basket])
-    const handleSubmit=async event=> {
-        // doing all the fancy stripe stuff...
-        event.preventDefault()
-        setProcessing(true)
-
-        const payload = await stripe.confirmCardPayment(clientSecret, {
-            payment_method:{
-                card : elements.getElement(CardElement)
-            }
-        }).then(({ paymentIntent}) => {
-            // paymentIntent = payment confirmation 
-
-            // storing buy data to firebase cloud database
-            db.collection('users').doc(user?.uid).collection('orders').doc(paymentIntent.id)
-              .set({
-                  basket : basket,
-                  amount : paymentIntent.amount,
-                  created: paymentIntent.created
-              })
-             
-              if(payload){ }
-
-            setSucceeded(true);
-            setError(null)
-            setProcessing(false)
-
-            dispatch({
-                type : 'EMPTY_BASKET'
-            })
-
-            navigate('/orders',{replace: true})
-        })
-    }
-
-    console.log('secret key is >>>', clientSecret)
 
     const handleChange=event => {
         // Listen for changes in the CardElement
@@ -117,7 +72,20 @@ function Payment() {
           
           handler: function(response){
             alert("Payment is successful with payment id: "+response.razorpay_payment_id)
-            
+            // storing buy data to firebase cloud database
+            db.collection('users').doc(user?.uid).collection('orders').doc(paymentIntent.id)
+              .set({
+                  basket : basket,
+                  amount : amount,
+                  created: response.razorpay_payment_id
+              })
+              
+              dispatch({
+                type : 'EMPTY_BASKET'
+            })
+
+            navigate('/orders',{replace: true})
+             
             },
             
            prefill: {
@@ -191,8 +159,10 @@ function Payment() {
 
                                  />
 
-                                 <button disabled={processing || disabled ||succeeded}>
-                                     <span onClick={displayRazorpay(getBasketTotal(basket))}>{ processing ? <p>Processing</p>:"Buy Now"}</span>
+                                 <button >
+                                     <span onClick={(event)=>{event.preventDefault();
+                                      displayRazorpay(getBasketTotal(basket))}}>
+                                      :"Buy Now"</span>
                                  </button>
                              </div>
 
